@@ -11,10 +11,14 @@
 require 'nokogiri'
 require 'open-uri'
 
+user = User.create(email: 'email@example.ru', password: '1234', password_confirmation: '1234')
+block = user.blocks.build(title: 'Карточка №1')
+block.save
+
 doc = Nokogiri::HTML(open('https://www.learnathome.ru/blog/100-beautiful-words'))
 
 doc.search('//table/tbody/tr').each do |row|
   original = row.search('td[2]')[0].content.downcase
   translated = row.search('td[1]')[0].content.downcase
-  Card.create(original_text: original, translated_text: translated, user_id: 17)
+  card = block.cards.build(original_text: original, translated_text: translated, user_id: user.id)
 end
