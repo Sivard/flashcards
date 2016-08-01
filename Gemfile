@@ -33,6 +33,7 @@ gem 'rollbar'
 gem 'newrelic_rpm'
 
 gem 'responders', '~> 2.0'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'rspec-rails'
