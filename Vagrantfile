@@ -52,7 +52,7 @@ Vagrant.configure("2") do |config|
   #   vb.memory = "1024"
   # end
   config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--memory", "2048"]
+    vb.customize ["modifyvm", :id, "--memory", "4096"]
   end
 
   config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
@@ -81,24 +81,18 @@ Vagrant.configure("2") do |config|
     chef.add_recipe 'apt'
     chef.add_recipe 'nodejs'
     chef.add_recipe 'ruby_build'
-    chef.add_recipe 'ruby_rbenv::user_install'
+    chef.add_recipe 'rvm_sl::user_install'
     chef.add_recipe 'vim'
     chef.add_recipe 'build-essential::default'
     chef.add_recipe 'postgresql::server'
 
     # Install Ruby 2.1.4 and Bundler
     chef.json = {
-      rbenv: {
-        user_installs: [{
-          user: 'vagrant',
-          rubies: ['2.1.4'],
-          global: '2.1.4',
-          gems: {
-            '2.1.4' => [
-              { name: "bundler" }
-            ]
-          }
-        }]
+      rvm: {
+        user: {
+          name: 'vagrant',
+          home: '/home/vagrant'
+        }
       },
       postgresql: {
         password: {
