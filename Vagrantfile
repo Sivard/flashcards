@@ -71,10 +71,11 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  # config.vm.provision "shell", inline: <<-SHELL
-  #   apt-get update
-  #   apt-get install -y apache2
-  # SHELL
+  config.vm.provision "shell", inline: <<-SHELL
+    apt-get update
+    apt-get install -y language-pack-ru
+  SHELL
+
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = ["cookbooks", "site-cookbooks"]
 
@@ -85,8 +86,8 @@ Vagrant.configure("2") do |config|
     chef.add_recipe 'vim'
     chef.add_recipe 'build-essential::default'
     chef.add_recipe 'postgresql::server'
+    #chef.add_recipe 'nginx::passenger'
 
-    # Install Ruby 2.1.4 and Bundler
     chef.json = {
       rvm: {
         user: {
@@ -101,4 +102,12 @@ Vagrant.configure("2") do |config|
       }
     }
   end
+
+  # config.vm.provision "shell", inline: <<-SHELL
+  #   echo "Install Ruby and Gems"
+  #     bash -l -c 'rvm autolibs read-fail; rvm install ruby-2.1.4'
+  #     cd /vagrant
+  #     gem install bundler
+  #     bundle install
+  # SHELL
 end

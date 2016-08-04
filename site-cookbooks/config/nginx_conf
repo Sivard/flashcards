@@ -1,0 +1,13 @@
+server {
+    listen 80;
+    server_name localhost;
+    
+    root /home/vagrant/current;
+    
+    # Important for VirtualBox
+    sendfile off;
+    
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
