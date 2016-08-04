@@ -43,14 +43,6 @@ Vagrant.configure("2") do |config|
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
-  #
-  #config.vm.provider "virtualbox" do |vb|
-  #   # Display the VirtualBox GUI when booting the machine
-  #   vb.gui = true
-  #
-  #   # Customize the amount of memory on the VM:
-  #   vb.memory = "1024"
-  # end
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "4096"]
   end
@@ -81,11 +73,11 @@ Vagrant.configure("2") do |config|
 
     chef.add_recipe 'apt'
     chef.add_recipe 'nodejs'
-    chef.add_recipe 'ruby_build'
-    chef.add_recipe 'rvm_sl::user_install'
-    chef.add_recipe 'vim'
     chef.add_recipe 'build-essential::default'
     chef.add_recipe 'postgresql::server'
+    chef.add_recipe 'rvm_sl::user_install'
+    chef.add_recipe 'rvm::my_rubies'
+    chef.add_recipe 'rvm::my_gems'
     #chef.add_recipe 'nginx::passenger'
 
     chef.json = {
@@ -104,10 +96,18 @@ Vagrant.configure("2") do |config|
   end
 
   # config.vm.provision "shell", inline: <<-SHELL
-  #   echo "Install Ruby and Gems"
-  #     bash -l -c 'rvm autolibs read-fail; rvm install ruby-2.1.4'
-  #     cd /vagrant
-  #     gem install bundler
-  #     bundle install
+  # echo "Install Ruby and Gems"
+  # cd /vagrant
+  # bundle install --path /vagrant --without development test --deployment --quiet
+  # ruby -v
+  # ~/.rvm/bin/rvm ruby-2.1.4 do bundle exec rake db:migrate
+  # cd /vagrant; ruby -v
   # SHELL
+
+  # config.vm.provision :host_shell do |host_shell|
+  #   host_shell.inline = 'bundle install'
+  # end
+  # config.vm.provision :host_shell do |host_shell|
+  #   host_shell.inline = 'rake db:migrate'
+  # end
 end
