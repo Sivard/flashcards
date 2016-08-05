@@ -1,0 +1,1 @@
+default['start_app']['app_dir'] = '/home/vagrant/application'
