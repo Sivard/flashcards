@@ -78,6 +78,7 @@ Vagrant.configure("2") do |config|
     chef.add_recipe 'rvm_sl::user_install'
     chef.add_recipe 'rvm::my_rubies'
     chef.add_recipe 'rvm::my_gems'
+    chef.add_recipe 'rvm::bundle_install'
     #chef.add_recipe 'nginx::passenger'
 
     chef.json = {
@@ -91,6 +92,9 @@ Vagrant.configure("2") do |config|
         password: {
           postgres: ""
         }
+      }, 
+      app_start: {
+        app_dir: '/vagrant'
       }
     }
   end
