@@ -1,0 +1,10 @@
+site "http://supermarket.chef.io/api/v1"
+
+cookbook 'apt'
+cookbook 'build-essential'
+cookbook 'rvm', git: 'git://github.com/fnichol/chef-rvm.git'
+cookbook 'rvm_sl'
+cookbook 'nodejs'
+cookbook 'vim'
+cookbook 'imagemagick'
+cookbook 'postgresql'

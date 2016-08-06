@@ -1,0 +1,5 @@
+development:
+  adapter: postgresql
+  database: vagrant
+  username: vagrant
+  password: 
