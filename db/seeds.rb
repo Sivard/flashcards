@@ -12,6 +12,7 @@ require 'nokogiri'
 require 'open-uri'
 
 user = User.create(email: 'email@example.ru', password: '1234', password_confirmation: '1234')
+user.add_role :admin
 block = user.blocks.create(title: 'Карточка №1')
 
 doc = Nokogiri::HTML(open('https://www.learnathome.ru/blog/100-beautiful-words'))

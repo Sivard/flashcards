@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :authentications
-resources :blocks
-resources :cards
-resources :users
+    resources :blocks
+    resources :cards
+    resources :users
+    resources :roles
 
     root to: "authentications#index"
   end
