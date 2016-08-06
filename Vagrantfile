@@ -30,7 +30,7 @@ Vagrant.configure('2') do |config|
     chef.json = {
       start_app: {app_dir: '/home/vagrant/application'},
       rvm: {
-        user_default_ruby: '2.3.1',
+        user_default_ruby: '2.1.4',
         user: {
           name: 'vagrant',
           home: '/home/vagrant'

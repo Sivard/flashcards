@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :authentications
+resources :blocks
+resources :cards
+resources :users
+
+    root to: "authentications#index"
+  end
+
   filter :locale
 
   root 'main#index'
