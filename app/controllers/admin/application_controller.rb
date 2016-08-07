@@ -6,10 +6,13 @@
 # you're free to overwrite the RESTful controller actions.
 module Admin
   class ApplicationController < Administrate::ApplicationController
+    include Pundit
     before_filter :authenticate_admin
 
     def authenticate_admin
-      current_user.is_admin?
+      unless current_user.is_admin?
+        redirect_to root_path, alert: 'Для админимстрирования недостаточно прав'
+      end
     end
 
     # Override this value to specify the number of elements to display at a time
@@ -17,5 +20,9 @@ module Admin
     # def records_per_page
     #   params[:per_page] || 20
     # end
+  private
+    def resource_params
+      params.require(resource_name).permit(dashboard.permitted_attributes)
+    end
   end
 end

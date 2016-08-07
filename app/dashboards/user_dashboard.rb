@@ -10,6 +10,7 @@ class UserDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     cards: Field::HasMany,
     blocks: Field::HasMany,
+    roles: Field::HasMany,
     authentications: Field::HasMany,
     current_block: Field::BelongsTo.with_options(class_name: "Block"),
     id: Field::Number,
@@ -67,6 +68,7 @@ class UserDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :cards,
     :blocks,
+    :roles,
     :authentications,
     :current_block,
     :email,

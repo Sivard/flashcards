@@ -19,7 +19,9 @@ class RoleDashboard < Administrate::BaseDashboard
   #
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
-  COLLECTION_ATTRIBUTES = [ :name ].freeze
+  COLLECTION_ATTRIBUTES = [ 
+    :name
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
@@ -33,12 +35,14 @@ class RoleDashboard < Administrate::BaseDashboard
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = [ :name ].freeze
+  FORM_ATTRIBUTES = [ 
+    :name
+  ].freeze
 
   # Overwrite this method to customize how cards are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(card)
-  #   "Card ##{card.id}"
+  # def display_resource(role)
+  #   "Role ##{role.id}"
   # end
 end

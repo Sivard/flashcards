@@ -46,3 +46,4 @@ gem 'thin', group: :developent
 gem 'administrate', '~> 0.2.2'
 gem 'bourbon'
 gem 'rolify'
+gem 'pundit'
