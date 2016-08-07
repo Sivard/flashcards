@@ -6,7 +6,7 @@
 #
 # All rights reserved - Do Not Redistribute
 
-rvm_rubies 'ruby-2.1.4' do
+rvm_rubies 'ruby-2.3.1' do
   default true
   home '/home/vagrant'
   user_name 'vagrant'
@@ -14,6 +14,6 @@ end
 
 rvm_gem 'bundler' do
   home '/home/vagrant'
-  ruby_version 'ruby-2.1.4'
+  ruby_version 'ruby-2.3.1'
   user_name 'vagrant'
 end
