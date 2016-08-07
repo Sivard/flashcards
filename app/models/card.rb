@@ -1,3 +1,23 @@
+# == Schema Information
+#
+# Table name: cards
+#
+#  id              :integer          not null, primary key
+#  original_text   :text
+#  translated_text :text
+#  review_date     :datetime         not null
+#  created_at      :datetime
+#  updated_at      :datetime
+#  user_id         :integer          not null
+#  image           :string
+#  block_id        :integer          not null
+#  interval        :integer          default(1), not null
+#  repeat          :integer          default(1), not null
+#  efactor         :float            default(2.5), not null
+#  attempt         :integer          default(1), not null
+#  quality         :integer          default(5), not null
+#
+
 require 'super_memo'
 
 class Card < ActiveRecord::Base

@@ -42,7 +42,11 @@ group :development, :test do
 
 end
 
-gem 'thin', group: :developent
+group :development do
+  gem 'thin'
+  gem 'annotate'
+end
+
 gem 'administrate', '~> 0.2.2'
 gem 'bourbon'
 gem 'rolify'

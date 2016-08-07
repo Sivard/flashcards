@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                              :integer          not null, primary key
+#  email                           :string
+#  crypted_password                :string
+#  created_at                      :datetime
+#  updated_at                      :datetime
+#  salt                            :string
+#  remember_me_token               :string
+#  remember_me_token_expires_at    :datetime
+#  reset_password_token            :string
+#  reset_password_token_expires_at :datetime
+#  reset_password_email_sent_at    :datetime
+#  current_block_id                :integer
+#  locale                          :string
+#
+
 class User < ActiveRecord::Base
   rolify
   has_many :cards, dependent: :destroy
