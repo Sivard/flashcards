@@ -51,7 +51,7 @@ class BlockDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how blocks are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(block)
-  #   "Block ##{block.id}"
-  # end
+  def display_resource(block)
+    block.title
+  end
 end

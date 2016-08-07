@@ -75,7 +75,7 @@ class CardDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how cards are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(card)
-  #   "Card ##{card.id}"
-  # end
+  def display_resource(card)
+    card.original_text
+  end
 end
