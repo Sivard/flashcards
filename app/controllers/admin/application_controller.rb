@@ -11,7 +11,7 @@ module Admin
 
     def authenticate_admin
       unless current_user.is_admin?
-        redirect_to root_path, alert: 'Для админимстрирования недостаточно прав'
+        redirect_to root_path, alert: 'Для администрирования недостаточно прав'
       end
     end
 
