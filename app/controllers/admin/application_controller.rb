@@ -7,7 +7,8 @@
 module Admin
   class ApplicationController < Administrate::ApplicationController
     include Pundit
-    before_filter :authenticate_admin
+    before_action :require_login
+    before_action :authenticate_admin
 
     def authenticate_admin
       unless current_user.is_admin?
