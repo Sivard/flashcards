@@ -6,7 +6,7 @@ ruby '2.3.1'
 gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record
 gem 'pg'
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
@@ -42,4 +42,12 @@ group :development, :test do
 
 end
 
-gem 'thin', group: :developent
+group :development do
+  gem 'thin'
+  gem 'annotate'
+end
+
+gem 'administrate', '~> 0.2.2'
+gem 'bourbon'
+gem 'rolify'
+gem 'pundit'
