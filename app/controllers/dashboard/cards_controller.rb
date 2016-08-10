@@ -50,6 +50,6 @@ class Dashboard::CardsController < Dashboard::BaseController
                                  :remote_image_url,
                                  :remove_image,
                                  :block_id,
-                                 )
+                                )
   end
 end
