@@ -1,0 +1,14 @@
+<% if @flickr.any? %>
+  <div class='flickr-images'>
+    <% @flickr.each_with_index do |img, index| %>
+      <% if index == 5 %>
+        <br style='clear:both;'>
+      <% end %>
+      <%= link_to '#', data: {original: img[:original_picture]}, class: 'flickr-link' do %>
+        <%= image_tag img[:small_picture], class: 'img-responsive img-rounded' %>
+      <% end %>
+    <% end %>
+  </div>
+<% else %>
+  Ничего не найдено, попробуйте повторить поиск
+<% end %>

@@ -6,11 +6,14 @@ ruby '2.3.1'
 gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record
 gem 'pg'
+
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
-
 gem 'jquery-rails'
+gem 'bourbon'
+gem 'bootstrap-sass', '~> 3.3.6'
+
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
@@ -48,6 +51,8 @@ group :development do
 end
 
 gem 'administrate', '~> 0.2.2'
-gem 'bourbon'
 gem 'rolify'
 gem 'pundit'
+
+gem 'flickraw'
+gem 'byebug'

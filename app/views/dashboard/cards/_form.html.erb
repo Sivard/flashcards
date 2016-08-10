@@ -16,6 +16,12 @@
   </div>
 
   <div class="form-group">
+    <%= link_to 'Загрузить из Flickr', '#', data: {toggle: 'modal', target: '#getFlickrList'} %>
+    <%= f.input :remote_image_url, as: :hidden %>
+    <span class='flickr-preview'></span>
+  </div>
+
+  <div class="form-group">
     <%= f.input :block_id, collection: current_user.blocks.all.order('title'),
                       prompt: 'Выберите колоду', label: 'Колоды',
                       input_html: { class: 'form-control', required: true } %>
@@ -36,3 +42,5 @@
 
   <%= f.button :submit, 'Сохранить', class: 'btn btn-default' %>
 <% end %>
+
+<%= render 'modal' %>
