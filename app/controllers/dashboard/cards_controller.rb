@@ -49,7 +49,7 @@ class Dashboard::CardsController < Dashboard::BaseController
                                  :image_cache,
                                  :remote_image_url,
                                  :remove_image,
-                                 :block_id,
+                                 :block_id
                                 )
   end
 end

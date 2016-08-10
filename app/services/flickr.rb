@@ -17,7 +17,7 @@ class Flickr
 
   def get_list
     result = []
-    ids_and_secrets_array = @list.map{ |r| [r.id, r.secret] }
+    ids_and_secrets_array = @list.map { |r| [r.id, r.secret] }
     ids_and_secrets_array.each do |a|
       flickr.photos.getInfo(photo_id: a[0], secret: a[1])
       sizes = flickr.photos.getSizes(photo_id: a[0])
