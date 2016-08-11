@@ -11,10 +11,9 @@
  * over styles defined in any styles defined in the other CSS/SCSS files in this
  * directory. It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
 
+@import 'bootstrap-sprockets';
 @import 'bootstrap';
 
 #header {
@@ -35,4 +34,21 @@
 
 .block_user_current_block_id {
   margin-left: 20px;
+}
+
+.flickr-content {
+  width: 428px;
+}
+
+.flickr-loader {
+  display: none;
+}
+
+.flickr-images {
+  height: 170px;
+}
+
+.flickr-link {
+  float: left;
+  margin: 2px;
 }

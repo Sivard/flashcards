@@ -36,6 +36,8 @@ Rails.application.routes.draw do
       end
     end
 
+    get 'flickr' => 'flickrs#index'
+
     put 'review_card' => 'trainer#review_card'
     get 'trainer' => 'trainer#index'
 

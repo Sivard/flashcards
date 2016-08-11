@@ -1,0 +1,11 @@
+{{#if data}}
+  <div class='flickr-images'>
+    <table class="stbs">
+      {{#each data}}
+        <a href='#' data-original="{{original_picture}}" class='flickr-link'>
+          <img src={{small_picture}} class='responsive img-rounded' />
+        </a>
+      {{/each}}
+    </table>
+  </div>
+{{/if}}
