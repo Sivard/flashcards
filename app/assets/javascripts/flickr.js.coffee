@@ -18,10 +18,10 @@ $ ->
     return false
 
   $('body').on 'click', '.flickr-link', (event) ->
-    url = $(this).attr('data-original')
     $('.flickr-loader').hide()
     $('.flickr-results').empty()
     $('#getFlickrList').modal('hide')
+    url = $(this).attr('data-original')
     $('#card_remote_image_url').val(url)
     img_url = $(this).children("img").attr('src')
     $('.flickr-preview').html("<img src='" + img_url + "'/>")
