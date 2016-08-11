@@ -24,8 +24,6 @@ describe 'Flickr service' do
                                                                 .to_return(status: 200, body: "", headers: {})
   end
 
-
-
   before do
     visit trainer_path
     login(user.email, '12345', 'Войти')

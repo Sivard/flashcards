@@ -1,18 +1,23 @@
 <div class="modal fade" id="getFlickrList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content flickr-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         <h4 class="modal-title" id="myModalLabel">Загрузить из Flickr</h4>
       </div>
-      <%= form_tag('/flickrs', method: :get, remote: true, id: 'flickr_form') do %>
+      <%= form_tag(flickr_path, method: :get, remote: true, id: 'flickr_form') do %>
         <div class="modal-body">
           <div class="form-group">
             <%= text_field_tag :text, nil, class: 'form-control', placeholder: 'Например: cat' %>
           </div>
-          <div class='flickr-results' ></div>
+          <div class='flickr-loader'>
+            <span>Подождите пожалуйста, идет загрузка</span>
+            <img src='/assets/loading.gif'/>
+          </div>
+          <div class='flickr-results'>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>

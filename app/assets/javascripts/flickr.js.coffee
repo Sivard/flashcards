@@ -1,19 +1,25 @@
 $ ->
   $("#flickr_form").submit (event) ->
-    $('.flickr-results').html("
-                              <span>Подождите пожалуйста, идет загрузка</span>
-                              <img src='/assets/loading.gif'/>
-                             ")
+    $('.flickr-loader').show()
+    $('.flickr-results').empty()
+    
     event.preventDefault()
     $.ajax
       type: "GET"
-      url: "/flickrs",
+      url: "/flickr",
       data: $(this).serializeArray()
       success: (result) ->
-        $('.flickr-results').html(result)
+        $('.flickr-loader').hide()
+        if result.data.length > 0
+          $('.flickr-results').html HandlebarsTemplates['flickrs/index'](result);
+        else
+          $('.flickr-results').html('Ничего не найдено, попробуйте повторить запрос')
+
+    return false
 
   $('body').on 'click', '.flickr-link', (event) ->
     url = $(this).attr('data-original')
+    $('.flickr-loader').hide()
     $('.flickr-results').empty()
     $('#getFlickrList').modal('hide')
     $('#card_remote_image_url').val(url)
