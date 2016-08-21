@@ -57,3 +57,5 @@ gem 'pundit'
 
 gem 'flickraw'
 gem 'byebug'
+
+gem 'sidekiq'
