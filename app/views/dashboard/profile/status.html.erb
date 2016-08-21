@@ -1,0 +1,17 @@
+<h1>Статистика</h1>
+<table class="table">
+  <thead>
+    <th>Статус</th>
+    <th>Текст</th>
+    <th>Время выполения</th>
+  </thead>
+  <tbody>
+    <% @log.each do |l| %>
+      <tr>
+        <td><%= t(l.status) %></td>
+        <td><%= l.msg %></td>
+        <td><%= l(l.created_at) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

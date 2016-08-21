@@ -11,6 +11,8 @@ class Word
                         params[:block_id])
 
     @user_id = user_id
+
+    Log.create(user_id: @user_id, status: 0, msg: 'Начало загрузки')
   end
 
   def run
@@ -20,7 +22,8 @@ class Word
     translated = doc.search(@word.translated_css)[0].content.downcase
 
     Card.create(original_text: original, translated_text: translated, user_id: @user_id, block_id: @word.block_id)
+    Log.create(user_id: @user_id, status: 0, msg: "Успешная загрузка карточки #{translated}")
   rescue
-    puts 'Перевод не загружен'
+    Log.create(user_id: @user_id, status: 1, msg: 'Перевод не загружен')
   end
 end

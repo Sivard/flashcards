@@ -19,9 +19,10 @@
 
 class User < ActiveRecord::Base
   rolify
-  has_many :cards, dependent: :destroy
-  has_many :blocks, dependent: :destroy
   has_many :authentications, dependent: :destroy
+  has_many :blocks, dependent: :destroy
+  has_many :cards, dependent: :destroy
+  has_many :logs
   belongs_to :current_block, class_name: 'Block'
   before_create :set_default_locale
   before_validation :set_default_locale, on: :create

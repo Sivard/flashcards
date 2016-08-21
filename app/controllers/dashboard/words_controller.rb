@@ -7,7 +7,7 @@ class Dashboard::WordsController < Dashboard::BaseController
 
   def create
     AddWordsJob.perform_later(word_params, current_user.id)
-    redirect_to root_path, flash: {notice: 'Обработка страницы поставленна в очередь. Ожидайте.'}
+    redirect_to root_path, flash: {notice: "Обработка страницы поставленна в очередь. <a href='/status'>Проверить результат</a>."}
   end
 
   private

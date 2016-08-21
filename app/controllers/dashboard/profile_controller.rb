@@ -12,6 +12,10 @@ class Dashboard::ProfileController < Dashboard::BaseController
     end
   end
 
+  def status
+    @log = current_user.logs
+  end
+
   private
 
   def user_params
