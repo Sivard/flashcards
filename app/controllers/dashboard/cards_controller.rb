@@ -3,7 +3,7 @@ class Dashboard::CardsController < Dashboard::BaseController
   respond_to :html
 
   def index
-    @cards = current_user.cards.all.order('review_date')
+    @cards = current_user.cards.order('review_date')
   end
 
   def new
