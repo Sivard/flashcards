@@ -2,27 +2,32 @@ require 'nokogiri'
 require 'open-uri'
 
 class WordsParser
-  WordObj = Struct.new(:original_css, :translated_css, :url, :block_id)
+  Parameters = Struct.new(:original_css, :translated_css, :url, :block_id)
 
   def initialize(user_id, params)
-    @word = WordObj.new(params[:original_css],
-                        params[:translated_css],
-                        params[:url],
-                        params[:block_id])
-
     @user_id = user_id
+    @param = Parameters.new(params[:original_css],
+                            params[:translated_css],
+                            params[:url],
+                            params[:block_id])
 
     Log.create(user_id: @user_id, status: 0, msg: 'Начало загрузки')
   end
 
   def run
-    doc = Nokogiri::HTML(open(@word.url))
+    doc = Nokogiri::HTML(open(@param.url))
 
-    original   = doc.search(@word.original_css)[0].content.downcase
-    translated = doc.search(@word.translated_css)[0].content.downcase
+    original_list   = doc.css(@param.original_css).map(&:content)
+    translated_list = doc.css(@param.translated_css).map(&:content)
 
-    Card.create(original_text: original, translated_text: translated, user_id: @user_id, block_id: @word.block_id)
-    Log.create(user_id: @user_id, status: 0, msg: "Успешная загрузка карточки #{translated}")
+    count = original_list.count
+    count.times do |i|
+      Card.create(original_text: original_list[i],
+                  translated_text: translated_list[i],
+                  user_id: @user_id,
+                  block_id: @param.block_id)
+    end
+    Log.create(user_id: @user_id, status: 0, msg: "Успешно загружено #{count} карточек")
   rescue
     Log.create(user_id: @user_id, status: 1, msg: 'Перевод не загружен')
   end

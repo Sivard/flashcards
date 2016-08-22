@@ -13,7 +13,7 @@ class Dashboard::ProfileController < Dashboard::BaseController
   end
 
   def status
-    @log = current_user.logs
+    @log = current_user.logs.order(created_at: :desc)
   end
 
   private
