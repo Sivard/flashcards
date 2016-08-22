@@ -1,4 +1,4 @@
-class AddWordsJob < ActiveJob::Base
+class AddWordsJob < ApplicationJob
   queue_as :default
 
   def perform(user_id, params)
