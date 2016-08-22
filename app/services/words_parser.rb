@@ -1,10 +1,10 @@
 require 'nokogiri'
 require 'open-uri'
 
-class Word
+class WordsParser
   WordObj = Struct.new(:original_css, :translated_css, :url, :block_id)
 
-  def initialize(params, user_id)
+  def initialize(user_id, params)
     @word = WordObj.new(params[:original_css],
                         params[:translated_css],
                         params[:url],

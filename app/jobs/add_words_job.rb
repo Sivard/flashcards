@@ -1,7 +1,7 @@
 class AddWordsJob < ActiveJob::Base
   queue_as :default
 
-  def perform(params, user_id)
-    Word.new(params, user_id).run
+  def perform(user_id, params)
+    WordsParser.new(user_id, params).run
   end
 end
