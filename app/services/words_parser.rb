@@ -26,7 +26,7 @@ class WordsParser
                   block_id: @block_id)
     end
     Log.create(user_id: @user_id, status: 0, msg: "Успешно загружено #{count} карточек")
-  # rescue
-  #   Log.create(user_id: @user_id, status: 1, msg: 'Перевод не загружен')
+  rescue
+    Log.create(user_id: @user_id, status: 1, msg: 'Перевод не загружен')
   end
 end
