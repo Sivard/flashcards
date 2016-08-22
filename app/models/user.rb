@@ -17,7 +17,7 @@
 #  locale                          :string
 #
 
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   rolify
   has_many :authentications, dependent: :destroy
   has_many :blocks, dependent: :destroy
