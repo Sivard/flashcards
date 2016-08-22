@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    resources :blocks
-    resources :cards
-    resources :users
-    resources :roles
+  # namespace :admin do
+  #   resources :blocks
+  #   resources :cards
+  #   resources :users
+  #   resources :roles
 
-    root to: "blocks#index"
-  end
+  #   root to: "blocks#index"
+  # end
 
   filter :locale
 
