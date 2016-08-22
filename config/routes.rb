@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    resources :blocks
-    resources :cards
-    resources :users
-    resources :roles
+  # namespace :admin do
+  #   resources :blocks
+  #   resources :cards
+  #   resources :users
+  #   resources :roles
 
-    root to: "blocks#index"
-  end
+  #   root to: "blocks#index"
+  # end
 
   filter :locale
 
@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     post 'logout' => 'user_sessions#destroy', :as => :logout
 
     resources :cards
+    resources :words, only: [:index, :create]
 
     resources :blocks do
       member do
@@ -43,5 +44,6 @@ Rails.application.routes.draw do
 
     get 'profile/:id/edit' => 'profile#edit', as: :edit_profile
     put 'profile/:id' => 'profile#update', as: :profile
+    get 'status' => 'profile#status'
   end
 end

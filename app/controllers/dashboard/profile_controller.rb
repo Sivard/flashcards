@@ -12,6 +12,10 @@ class Dashboard::ProfileController < Dashboard::BaseController
     end
   end
 
+  def status
+    @log = current_user.logs.order(created_at: :desc)
+  end
+
   private
 
   def user_params

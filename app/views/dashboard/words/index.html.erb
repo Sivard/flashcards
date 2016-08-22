@@ -1,0 +1,24 @@
+<h3>Добавить переводы с url</h3>
+<%= form_tag words_path, method: :post do %>
+  <div class="form-group">
+    <label>Адрес страницы:</label>
+    <%= text_field_tag 'word[url]', nil, class: 'form-control',
+            placeholder: 'https://www.learnathome.ru/blog/100-beautiful-words', autofocus: true %>
+  </div>
+
+  <div class="form-group">
+    <label>CSS оригинала</label>
+    <%= text_field_tag 'word[original_css]', nil, class: 'form-control', placeholder: 'table tr td[2]' %>
+  </div>
+
+  <div class="form-group">
+    <label>CSS перевода</label>
+    <%= text_field_tag 'word[translated_css]', nil, class: 'form-control', placeholder: 'table tr td[4]' %>
+  </div>
+
+  <div class="form-group">
+    <%= select("word", "block_id", @blocks, {include_blank: 'Выберите колоду'}, {class: 'form-control'}) %>
+  </div>
+
+  <%= submit_tag 'Сохранить', class: 'btn btn-default' %>
+<% end %>
