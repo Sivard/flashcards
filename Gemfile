@@ -60,6 +60,7 @@ gem 'pundit'
 gem 'flickraw'
 
 gem 'sidekiq'
+gem 'redis-rails'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
