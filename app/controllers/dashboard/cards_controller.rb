@@ -1,4 +1,5 @@
 class Dashboard::CardsController < Dashboard::BaseController
+  impressionist actions: [:create]
   before_action :set_card, only: [:destroy, :edit, :update]
   respond_to :html
 
