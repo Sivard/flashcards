@@ -20,8 +20,8 @@ class WordsParser
 
     count = original_list.count
     count.times do |i|
-      Card.create(original_text: original_list[i],
-                  translated_text: translated_list[i],
+      Card.create(original_text: original_list[i].downcase,
+                  translated_text: translated_list[i].downcase,
                   user_id: @user_id,
                   block_id: @block_id)
     end
