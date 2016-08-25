@@ -1,4 +1,5 @@
 class Dashboard::TrainerController < Dashboard::BaseController
+  impressionist actions: [:review_card]
 
   def index
     if params[:id]

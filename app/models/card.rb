@@ -21,6 +21,8 @@
 require 'super_memo'
 
 class Card < ApplicationRecord
+  is_impressionable
+  
   belongs_to :user
   belongs_to :block
   validates :user_id, presence: true
