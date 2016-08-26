@@ -16,6 +16,7 @@ class Dashboard::CardsController < Dashboard::BaseController
   def create
     @card = current_user.cards.build(card_params)
     if @card.save
+      impressionist(@card, "юзер добавил карточку #{@card.original_text}")
       redirect_to cards_path
     else
       respond_with @card

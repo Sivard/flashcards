@@ -8,6 +8,7 @@
         <h4 class="modal-title" id="myModalLabel">Загрузить из Flickr</h4>
       </div>
       <%= form_tag(flickr_path, method: :get, remote: true, id: 'flickr_form') do %>
+        <%= hidden_field_tag :card_id, params[:id] %>
         <div class="modal-body">
           <div class="form-group">
             <%= text_field_tag :text, nil, class: 'form-control', placeholder: 'Например: cat' %>

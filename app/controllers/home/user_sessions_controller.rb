@@ -1,4 +1,6 @@
 class Home::UserSessionsController < Home::BaseController
+  impressionist actions: [:create]
+
   def new
     if current_user
       redirect_to root_path

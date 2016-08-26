@@ -1,4 +1,5 @@
 class Home::OauthsController < Home::BaseController
+  impressionist actions: [:oauth]
   # sends the user on a trip to the provider,
   # and after authorizing there back to the callback url.
   def oauth

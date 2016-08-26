@@ -1,4 +1,5 @@
 class Home::UsersController < Home::BaseController
+  impressionist actions: [:create]
   respond_to :html
 
   def new
