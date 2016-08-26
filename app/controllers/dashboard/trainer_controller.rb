@@ -1,6 +1,4 @@
 class Dashboard::TrainerController < Dashboard::BaseController
-  impressionist actions: [:review_card]
-
   def index
     if params[:id]
       @card = current_user.cards.find(params[:id])
@@ -28,20 +26,27 @@ class Dashboard::TrainerController < Dashboard::BaseController
     if check_result[:state]
       if check_result[:distance] == 0
         flash[:notice] = t(:correct_translation_notice)
+        tracker(flash[:notice])
       else
         flash[:alert] = t 'translation_from_misprint_alert',
                           user_translation: trainer_params[:user_translation],
                           original_text: @card.original_text,
                           translated_text: @card.translated_text
+        tracker(flash[:alert])
       end
       redirect_to trainer_path
     else
       flash[:alert] = t(:incorrect_translation_alert)
+      tracker(flash[:alert])
       redirect_to trainer_path(id: @card.id)
     end
   end
 
   private
+
+  def tracker(flash)
+    impressionist(@card, "#{flash}")
+  end
 
   def trainer_params
     params.permit(:user_translation)

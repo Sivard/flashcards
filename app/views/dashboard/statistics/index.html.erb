@@ -1,0 +1,47 @@
+<h2>
+  Статистика действий(для <%= current_user.email %>)
+</h2>
+
+<table class="table">
+  <thead>
+    <th>Model Type</th>
+    <th>Model ID</th>
+    <th>URL</th>
+    <th>Message</th>
+  </thead>
+  <tbody>
+    <% @statistics_current_user.each do |s| %>
+      <tr>
+        <td><%= s.impressionable_type %></td>
+        <td><%= s.impressionable_id %></td>
+        <td>
+          '<%= "#{s.controller_name}##{s.action_name}" %>'
+        </td>
+        <td><%= s.message %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Статистика действий (другие действия)</h2>
+
+<table class="table">
+  <thead>
+    <th>Model Type</th>
+    <th>Model ID</th>
+    <th>URL</th>
+    <th>Message</th>
+  </thead>
+  <tbody>
+    <% @statistics_other_actions.each do |s| %>
+      <tr>
+        <td><%= s.impressionable_type %></td>
+        <td><%= s.impressionable_id %></td>
+        <td>
+          '<%= "#{s.controller_name}##{s.action_name}" %>'
+        </td>
+        <td><%= s.message %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
