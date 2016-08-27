@@ -26,6 +26,6 @@ module Flashcards
 
     config.active_job.queue_adapter = :sidekiq
 
-    config.middleware.use "CollectStatistic"
+    config.middleware.use "CollectStatistic" unless Rails.env.test?
   end
 end
