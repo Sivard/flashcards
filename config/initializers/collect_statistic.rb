@@ -11,9 +11,11 @@ class CollectStatistic
     @status, @headers, @response = @app.call(env)
 
     if @headers['Content-Type'].present? && @headers['Content-Type'].include?('text/html')
-        # controller: env['action_dispatch.request.path_parameters'][:controller],
-        # action: env['action_dispatch.request.path_parameters'][:action],
-        # user_id: env['action_dispatch.request.unsigned_session_cookie']['user_id']
+      Statistic.create(
+        controller: env['action_dispatch.request.path_parameters'][:controller],
+        action: env['action_dispatch.request.path_parameters'][:action],
+        user_id: env['action_dispatch.request.unsigned_session_cookie']['user_id']
+      )
     end
 
     [@status, @headers, self]
