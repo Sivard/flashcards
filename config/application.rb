@@ -25,5 +25,7 @@ module Flashcards
     config.i18n.available_locales = [:ru, :en]
 
     config.active_job.queue_adapter = :sidekiq
+
+    config.middleware.use "CollectStatistic"
   end
 end
