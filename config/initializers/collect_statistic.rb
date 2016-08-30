@@ -1,30 +1,28 @@
-unless Rails.env.test?
-  class CollectStatistic
-    def initialize(app)
-      @app = app
+class CollectStatistic
+  def initialize(app)
+    @app = app
+  end
+
+  def call(env)
+    dup._call(env)
+  end
+
+  def _call(env)
+    @status, @headers, @response = @app.call(env)
+
+    if @headers['Content-Type'].present? && @headers['Content-Type'].include?('text/html')
+      Statistic.create(
+        controller: env['action_dispatch.request.path_parameters'][:controller],
+        action: env['action_dispatch.request.path_parameters'][:action],
+        user_id: env['action_dispatch.request.unsigned_session_cookie']['user_id']
+      )
     end
 
-    def call(env)
-      dup._call(env)
-    end
+    [@status, @headers, self]
+  end
 
-    def _call(env)
-      @status, @headers, @response = @app.call(env)
-
-      if @headers['Content-Type'].present? && @headers['Content-Type'].include?('text/html')
-        Statistic.create(
-          controller: env['action_dispatch.request.path_parameters'][:controller],
-          action: env['action_dispatch.request.path_parameters'][:action],
-          user_id: env['action_dispatch.request.unsigned_session_cookie']['user_id']
-        )
-      end
-
-      [@status, @headers, self]
-    end
-
-    def each(&block)
-      @response.each(&block)
-    end
+  def each(&block)
+    @response.each(&block)
   end
 end
 

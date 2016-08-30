@@ -1,0 +1,31 @@
+<h2>
+  Статистика действий(для <%= current_user.email %>)
+</h2>
+
+<%= form_for statistics_path, method: :get, html: {class: 'form-inline'} do |f| %>
+  <div class='form-group'>
+    <%= text_field_tag :q, params[:q], placeholder: 'Например, dashboards', class: 'form-control' %>
+  </div>
+  <button type='submit' class='btn btn-default'>Найти</button>
+<% end %>
+<br>
+<% if @statistics.any? %>
+  <table class="table">
+    <thead>
+      <th>Controller</th>
+      <th>Action</th>
+      <th>Дата</th>
+    </thead>
+    <tbody>
+      <% @statistics.each do |s| %>
+        <tr>
+          <td><%= s.controller %></td>
+          <td><%= s.action %></td>
+          <td><%= l(s.created_at) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% elsif !params[:q].to_s.length.zero? %>
+  <p>По вашему запросу ничего не найдено.</p>
+<% end %>
